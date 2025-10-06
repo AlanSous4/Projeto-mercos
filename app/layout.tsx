@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cosmer — Plataforma B2B & Força de Vendas",
     description:
-      "Mercos — solução completa de e-commerce B2B, força de vendas e integrações para empresas.",
+      "Cosmer — solução completa de e-commerce B2B, força de vendas e integrações para empresas.",
     url: "https://projeto-mercos.vercel.app",
     siteName: "Mercos",
     images: [
