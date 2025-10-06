@@ -50,7 +50,7 @@ export default function ColaboradoresPage() {
 
             <div className="flex items-center gap-2 text-sm mt-1 text-gray-600">
               <Phone className="w-4 h-4" />
-              (11) 99999-3345
+              (11) 99864-3767
             </div>
 
             <button className="mt-3 px-3 py-1 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-200 cursor-pointer">
