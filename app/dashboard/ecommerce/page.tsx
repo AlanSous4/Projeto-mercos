@@ -21,7 +21,7 @@ export default function DashboardPage() {
           Venda mais com o Catálogo Online
         </h2>
         <p className="mb-4">
-          Mais de mil empresas já aceleram suas vendas com o E-commerce B2B da Mercos.
+          Mais de mil empresas já aceleram suas vendas com o E-commerce B2B da Cosmer.
           Agora, é vez da sua empresa fidelizar clientes e vender com praticidade.
         </p>
 
