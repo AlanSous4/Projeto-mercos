@@ -5,6 +5,7 @@ import { CarteiraResumo } from "@/components/CarteiraResumo"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
+import { useRouter } from "next/navigation" // ✅ Adicionado para navegação entre páginas
 
 const clientes = [
   {
@@ -15,16 +16,17 @@ const clientes = [
 ]
 
 export default function ClientesPage() {
+  const router = useRouter() // ✅ Hook para navegação
+
   return (
     <div className="flex h-screen bg-gray-50">
       
-
       {/* CONTEÚDO PRINCIPAL */}
       <main className="flex-1 p-6 overflow-y-auto">
         {/* AVISO DE EXPIRAÇÃO */}
         <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-md mb-6 flex justify-between items-center">
           <span>⚠ Seu período de uso expirou em 15/09/2025.</span>
-          <Button className="bg-violet-600 hover:bg-violet-700">Entrar em contato</Button>
+          <Button className="bg-violet-600 hover:bg-violet-700 cursor-pointer">Entrar em contato</Button>
         </div>
 
         <div className="grid grid-cols-3 gap-6">
@@ -32,15 +34,19 @@ export default function ClientesPage() {
           <div className="col-span-2 bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between mb-4">
               <div className="flex gap-2">
-                <Button className="bg-violet-600 hover:bg-violet-700 text-white">
+                {/* ✅ Botão com navegação e cursor pointer */}
+                <Button
+                  className="bg-violet-600 hover:bg-violet-700 text-white cursor-pointer"
+                  onClick={() => router.push("/dashboard/clientes/novo")}
+                >
                   + Cadastrar cliente
                 </Button>
-                <Button variant="outline">Importar</Button>
-                <Button variant="outline">Vínculos e permissões</Button>
+                <Button variant="outline" className="cursor-pointer">Importar</Button>
+                <Button variant="outline" className="cursor-pointer">Vínculos e permissões</Button>
               </div>
               <div className="flex gap-2">
                 <Input placeholder="Pesquise por Nome ou CNPJ" className="w-64" />
-                <Button variant="outline">
+                <Button variant="outline" className="cursor-pointer">
                   <Search className="w-4 h-4" />
                 </Button>
               </div>

@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "sonner"
 import { supabase } from "@/lib/supabase/client"
 import { useSession } from "@supabase/auth-helpers-react"
-import { Trash2, Pencil } from "lucide-react"
+import { Trash2, Pencil, ArrowLeft } from "lucide-react" // ✅ Ícone para o botão Voltar
+import { useRouter } from "next/navigation" // ✅ Para navegação
 
 const schema = z.object({
   nome: z.string().min(2, "Nome obrigatório"),
@@ -19,6 +20,8 @@ type FormData = z.infer<typeof schema>
 export default function NovoCliente() {
   const session = useSession()
   const userId = session?.user?.id
+  const router = useRouter() // ✅ Hook de navegação
+
   const {
     register,
     handleSubmit,
@@ -62,8 +65,20 @@ export default function NovoCliente() {
   }
 
   return (
-    <div className="max-w-md mx-auto px-4 py-8">
-      <h1 className="text-2xl font-semibold mb-6 text-primary">Cadastro de Cliente</h1>
+    <div className="relative max-w-md mx-auto px-4 py-8">
+
+      {/* ✅ BOTÃO VOLTAR */}
+      <button
+        onClick={() => router.push("/dashboard/clientes")}
+        className="absolute top-4 right-4 bg-violet-600 text-white px-3 py-1.5 rounded-md shadow-md text-sm flex items-center gap-1 cursor-pointer hover:bg-violet-700 transition-all active:scale-95"
+      >
+        <ArrowLeft size={16} />
+        Voltar
+      </button>
+
+      <h1 className="text-2xl font-semibold mb-6 text-primary text-center md:text-left">
+        Cadastro de Cliente
+      </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
@@ -101,7 +116,7 @@ export default function NovoCliente() {
         </button>
       </form>
 
-      <div className="flex gap-4 mt-6">
+      <div className="flex flex-col sm:flex-row gap-4 mt-6">
         <button
           onClick={handleSubmit(handleEdit)}
           className="flex-1 py-2 rounded-md bg-secondary text-secondary-foreground cursor-pointer hover:opacity-90 transition flex items-center justify-center gap-2"
